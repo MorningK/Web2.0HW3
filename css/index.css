@@ -28,22 +28,56 @@ li {
 }
 
 /* 设置为button的所在位置 */
-#info-bar, #control-ring-container {
+#info-bar, #control-ring-container, .info, #control-ring {
     position: absolute;
     visibility: hidden;
     width: 32px;
     height: 32px;
+    margin: 0px;
+    padding: 0px; 
 }
 
-/* 设置各个部分的相关位置与属性 */
-.info {
-    position: relative;
+/* info-bar下的相关属性，位置 */
+#info-bar, .info, span {
+    -webkit-transition:all 0.5s ease-in-out .4s;
+	-moz-transition:all 0.5s ease-in-out .4s;
+	-o-transition:all 0.5s ease-in-out .4s;
+	transition:all 0.5s ease-in-out .4s;
+}
+
+span {
+    opacity: 0;
+}
+
+#button:hover #info-bar {
+    visibility: visible;
+    
+}
+
+#button:hover .info {
+    visibility: visible;
     background-color: gray;
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     padding: 10px;
+    
+    transform: translate(-45px, -155px);
+    -webkit-transition:all 0.5s ease-in-out 1.4s;
+	-moz-transition:all 0.5s ease-in-out 1.4s;
+	-o-transition:all 0.5s ease-in-out 1.4s;
+	transition:all 0.5s ease-in-out 1.4s;
 }
 
+#button:hover span {
+    opacity: 1;
+    -webkit-transition:all 0.5s ease-in-out ;
+	-moz-transition:all 0.5s ease-in-out ;
+	-o-transition:all 0.5s ease-in-out ;
+	transition:all 0.5s ease-in-out ;
+}
+
+
+/* 设置图标的相对位置及属性 */
 .page {
     color: white;
 }
@@ -51,23 +85,25 @@ li {
 .user {
     position: absolute;
     top: 10%;
-    left: 20%;
+    left: 30%;
     font-size: 12pt;
+    
 }
 
 .comment {
     position: absolute;
     top: 30%;
-    left: 30%;
+    left: 25%;
     font-size: 25pt;
     font-weight: bold;
+    
 }
 
 .mine {
     position: absolute;
     color: #079E6E;
     font-size: 15pt;
-    top: 70%;
+    top: 65%;
 }
 
 .posted {
@@ -87,21 +123,27 @@ li {
     top: -6px;
 }
 
+/* 设置control-ring的相关属性，背景图片 */
 .button {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
     background-repeat: no-repeat;
     background-position: center;
     background-color: gray;
     width: 25px;
     height: 25px;
-    
     padding: 5px 5px;
-    
+}
+
+.button, .mask, .history, .message, .setting, .sign {
+    -webkit-transition:all 0.5s ease-in-out 0.4s;
+	-moz-transition:all 0.5s ease-in-out .4s;
+	-o-transition:all 0.5s ease-in-out .4s;
+	transition:all 0.5s ease-in-out .4s;
 }
 
 .mask {
-    position: relative;
-    top: -5px;
-    left: 13px;
     background-image: url("../images/mask.png");
 }
 
@@ -110,24 +152,7 @@ li {
 }
 
 .message {
-    position: relative;
-    top: 5px;
-    left: 17px;
     background-image: url("../images/message.png");
-}
-
-.setting {
-    position: relative;
-    top: -3px;
-    left: 50px;
-    background-image: url("../images/setting.png");
-}
-
-.sign {
-    position: relative;
-    top: -42px;
-    left: 95px;
-    background-image: url("../images/signin.png");
 }
 
 .unread {
@@ -139,9 +164,47 @@ li {
     color: white;
     background-color: red;
     padding: 2px 6px;
+}
+
+.setting {
+    background-image: url("../images/setting.png");
+}
+
+.sign {
+    background-image: url("../images/signin.png");
+}
+
+/* 设置hover时的属性，位置变换 */
+#button:hover .button {
+    visibility: visible;
+    -webkit-transition:all 0.5s ease-in-out 1.4s;
+	-moz-transition:all 0.5s ease-in-out 1.4s;
+	-o-transition:all 0.5s ease-in-out 1.4s;
+	transition:all 0.5s ease-in-out 1.4s;
+}
+
+#button:hover .mask {
+    transform: translate(-65px, -35px);
+}
+
+#button:hover .history {
+    transform: translate(-75px, 7px);
+}
+
+#button:hover .message {
+    transform: translate(-65px, 47px);
+}
+
+#button:hover .setting {
+    transform: translate(-23px, 73px);
     
 }
 
+#button:hover .sign {
+    transform: translate(22px, 60px);
+}
+
+/* 设置@+图标的相关属性 */
 .icon {
     background-image: url("../images/atplus_white.png");
     background-repeat: no-repeat;
@@ -171,25 +234,4 @@ li {
     -webkit-transform: scale(2,2);
 }
 
-/* 调整位置到at的上面 */
-#button:hover #info-bar {
-    bottom: 150px;
-    right: 45px;
-}
 
-/* 调整位置到at的左边 */
-#button:hover #control-ring-container {
-    bottom: 40px;
-    right: 120px;
-}
-
-/* 等at变大后，把内容都显示出来 */
-#button:hover .info, #button:hover .button  {
-    visibility: visible;
-
-    /* 延迟1.4s，过程0.5s */
-    -webkit-transition:all 0.5s ease-in-out 1.4s;
-	-moz-transition:all 0.5s ease-in-out 1.4s;
-	-o-transition:all 0.5s ease-in-out 1.4s;
-	transition:all 0.5s ease-in-out 1.4s;
-}
